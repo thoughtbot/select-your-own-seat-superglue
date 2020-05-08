@@ -5,6 +5,12 @@ json.array! sections do |section|
       json.y seat.y
       json.venue_floor_seat_path venue_floor_seat_path(venue, floor, seat.row_number)
       json.aria_label seat.row_number
+
+      if Current.cart.include?(seat)
+        json.href "#seat-icon-selected"
+      else
+        json.href "#seat-icon-unselected"
+      end
     end
   end
 end
