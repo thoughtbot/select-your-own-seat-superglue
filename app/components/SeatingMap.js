@@ -1,5 +1,5 @@
 import React from 'react'
-
+import svgPanZoom from 'svg-pan-zoom'
 const buildSectionElements = (sections) => {
   return sections.map((section, index) => {
     const seatElements = section.seats.map((seat) => (
@@ -31,6 +31,26 @@ const buildSectionElements = (sections) => {
 }
 
 export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.svgRef = React.createRef()
+  }
+
+  componentDidMount() {
+    this.map = svgPanZoom(this.svgRef.current, {
+      center: true,
+      fit: true,
+      zoomEnabled: false,
+      zoomScaleSensitivity: 0.75,
+      minZoom: 1.0,
+      maxZoom: 8,
+    })
+  }
+
+  componentWillUnmount() {
+    this.map.destroy()
+  }
+
   render() {
     const { sections } = this.props
     const sectionElements = buildSectionElements(sections)
@@ -43,6 +63,7 @@ export default class extends React.Component {
         width="1600px"
         height="1600px"
         viewBox="0 0 1600 1600"
+        ref={this.svgRef}
       >
         <rect fill="none" x="0" y="0" width="1600" height="1600"></rect>
         <svg style={{display: "none"}}>
@@ -66,7 +87,7 @@ export default class extends React.Component {
           </symbol>
         </svg>
         { sectionElements }
-      </svg>
+       </svg>
     )
   }
 }

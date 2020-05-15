@@ -12,7 +12,8 @@
     "react-dom": "^18.2.0",
     "sass": "^1.69.0",
     "react-inlinesvg": "^4.0.3",
-    "react-redux": "^8.1.2"
+    "react-redux": "^8.1.2",
+    "svg-pan-zoom": "^3.6.1"
   },
   "version": "0.1.0",
   "scripts": {
