@@ -1,0 +1,26 @@
+json.sections do
+  json.array! sections do |section|
+    if params.fetch(:maximum, Float::INFINITY).to_f >= section.price
+      json.opacity "1.0"
+      json.hidden false
+    else
+      json.opacity "0.3"
+      json.hidden true
+    end
+
+    json.seats do
+      json.array! section.seats do |seat|
+        json.x seat.x
+        json.y seat.y
+        json.venueFloorSeatPath venue_floor_seat_path(venue, floor, seat.row_number)
+        json.ariaLabel seat.row_number
+
+        if Current.cart.include?(seat)
+          json.href "#seat-icon-selected"
+        else
+          json.href "#seat-icon-unselected"
+        end
+      end
+    end
+  end
+end
