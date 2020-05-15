@@ -1,6 +1,6 @@
 json.venueName venue.name
 
-json.sections(partial: ['sections', locals: local_assigns]) do
+json.seatingMap(partial: ['seating_map', locals: local_assigns]) do
 end
 
 json.floors(partial: ['floors', locals: local_assigns]) do

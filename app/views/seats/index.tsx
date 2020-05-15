@@ -10,7 +10,9 @@ import { FloorSwitcher, FloorProps } from '@javascript/components/FloorSwitcher'
 
 type ContentProps = {
   venueName: string
-  sections:  Section[]
+  seatingMap: {
+    sections:  Section[]
+  }
   seat: SeatDialogProps
   cart: CartItemProps[]
   floors: FloorProps[]
@@ -21,7 +23,7 @@ type ContentProps = {
 
 export default () => {
   const { 
-    sections,
+    seatingMap,
     cart,
     seat,
     floors,
@@ -41,7 +43,7 @@ export default () => {
         <section className="syos-frame">
           <div className="syos-frame__map">
             <FloorSwitcher floors={floors}/>
-            <SeatingMap sections={sections}/>
+            <SeatingMap {...seatingMap}/>
             <SeatingLegend/>
           </div>
           <div className="syos-frame__sidebar">
