@@ -1,6 +1,8 @@
 import React from 'react'
 import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from './SvgZoomControls'
+import SVG from 'react-inlinesvg';
+import loadingSvg from '../assets/images/icons/loader.svg'
 
 const buildSectionElements = (sections) => {
   return sections.map((section, index) => {
@@ -75,6 +77,12 @@ export default class extends React.Component {
 
     return(
       <>
+        <div
+          className="syos-frame__map-overlay syos-loader-overlay is-loading"
+          aria-hidden="true"
+        >
+          <SVG src={ loadingSvg } className="syos-icon" title="zoom in"/>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
