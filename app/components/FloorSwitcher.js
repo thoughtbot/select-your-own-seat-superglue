@@ -19,7 +19,7 @@ export default class extends React.Component {
             {
               floors.map(({path, name, className}) => (
                 <li className="syos-block-stack__item" key={path}>
-                  <a href={path} className={className}>{name}</a>
+                  <a href={path} className={className} data-sg-visit={true}>{name}</a>
                 </li>
               ))
             }
