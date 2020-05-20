@@ -1,25 +1,29 @@
 import React from 'react'
 import SVG from 'react-inlinesvg';
 import closeSvg from '../../assets/images/icons/x-circle.svg'
+import { ButtonTo } from './ButtonTo';
+import { FormProps } from './inputs';
 
 export type CartItemProps = {
   id: number
   rowNumber: number
   price: string
+  removeSeatForm: FormProps
 }
 
 export type CartProps = {
   cart: CartItemProps[]
 }
+
 export const Cart = (props: CartProps) => {
-  const cartItems = props.cart.map(({rowNumber, price, id}) => (
+  const cartItems = props.cart.map(({rowNumber, price, id, removeSeatForm}) => (
     <tr key={id}>
       <td> {rowNumber} </td>
       <td className="syos-table__cell--numerals"> {price} </td>
       <td className="syos-u-text-align-right">
-        <button className="syos-button syos-button--transparent">
+        <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">
           <SVG src={ closeSvg } className="syos-icon" title="Remove"/>
-        </button>
+        </ButtonTo>
       </td>
     </tr>
   ))
