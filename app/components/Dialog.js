@@ -20,7 +20,7 @@ export default class extends React.Component {
 
   render () {
     return (
-      <dialog className='syos-dialog' ref={this.dialog}>
+      <dialog className='syos-dialog' ref={this.dialog} onClose={() => history.back()}>
         {this.props.children}
       </dialog>
     )
