@@ -63,6 +63,12 @@ export default class extends React.Component {
     this.map.destroy()
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.floor !== prevProps.floor) {
+      this.map.reset()
+    }
+  }
+
   render() {
     const { sections } = this.props
     const sectionElements = buildSectionElements(sections)

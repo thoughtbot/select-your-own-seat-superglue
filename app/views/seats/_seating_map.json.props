@@ -1,3 +1,5 @@
+json.floor floor.name
+
 json.sections do
   json.array! sections do |section|
     if params.fetch(:maximum, Float::INFINITY).to_f >= section.price
