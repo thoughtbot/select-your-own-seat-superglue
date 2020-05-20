@@ -1,17 +1,18 @@
 import React from 'react'
 import SVG from 'react-inlinesvg';
 import closeSvg from '../assets/images/icons/x-circle.svg'
+import ButtonTo from './ButtonTo'
 
 export default class extends React.Component {
   render () {
-    const cartItems = this.props.cart.map(({rowNumber, price, removeSvg, id}) => (
+    const cartItems = this.props.cart.map(({rowNumber, price, removeSeatForm, id}) => (
       <tr key={id}>
         <td> {rowNumber} </td>
         <td className="syos-table__cell--numerals"> {price} </td>
         <td className="syos-u-text-align-right">
-          <button className="syos-button syos-button--transparent">
+          <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">
             <SVG src={ closeSvg } className="syos-icon" title="Remove"/>
-          </button>
+          </ButtonTo>
         </td>
       </tr>
     ))
