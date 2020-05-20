@@ -2,4 +2,7 @@ json.array! Current.cart.seats do |seat|
   json.id seat.id
   json.row_number seat.row_number
   json.price number_to_currency(seat.section.price / 100.0)
+  json.removeSeatForm do
+    form_props(url: seat_selection_path(seat), method: :delete)
+  end
 end
