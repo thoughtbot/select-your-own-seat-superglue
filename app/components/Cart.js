@@ -10,7 +10,7 @@ export default class extends React.Component {
         <td> {description} </td>
         <td className="syos-table__cell--numerals"> {price} </td>
         <td className="syos-u-text-align-right">
-          <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">
+          <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent" data-sg-visit={true}>
             <SVG src={ closeSvg } className="syos-icon" title="Remove"/>
           </ButtonTo>
         </td>
