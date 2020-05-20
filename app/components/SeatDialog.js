@@ -69,7 +69,7 @@ export default class extends React.Component {
             </div>
 
             <div className="syos-inline-stack__item" >
-              <ButtonTo {...seatSelectionForm} />
+              <ButtonTo {...seatSelectionForm} data-sg-visit={true}/>
             </div>
           </div>
         </footer>
