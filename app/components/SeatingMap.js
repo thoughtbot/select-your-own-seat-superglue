@@ -4,13 +4,15 @@ import SvgZoomControls from './SvgZoomControls'
 import SVG from 'react-inlinesvg';
 import loadingSvg from '../assets/images/icons/loader.svg'
 
-const buildSectionElements = (sections) => {
+const buildSectionElements = (pageKey, sections) => {
   return sections.map((section, index) => {
     const seatElements = section.seats.map((seat) => (
       <a
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
         key={seat.venueFloorSeatPath}
+        data-sg-visit={true}
+        data-sg-placeholder={pageKey}
        >
         <use
           width="12px"
@@ -74,9 +76,10 @@ export default class extends React.Component {
   render() {
     const { 
       sections,
-      loading
+      loading,
+      pageKey,
     } = this.props
-    const sectionElements = buildSectionElements(sections)
+    const sectionElements = buildSectionElements(pageKey, sections)
     const loadingClass = loading && 'is-loading'
 
     return(
