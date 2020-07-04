@@ -5,19 +5,25 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@thoughtbot/superglue": "^0.50.0",
     "breakpoint-sass": "^3.0.0",
-    "esbuild": "^0.19.3",
     "dialog-polyfill": "^0.5.6",
+    "esbuild": "^0.19.3",
+    "esbuild-plugin-polyfill-node": "^0.3.0",
+    "esbuild-plugins-node-modules-polyfill": "^1.6.1",
     "history": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.69.0",
     "react-inlinesvg": "^4.0.3",
     "react-redux": "^8.1.2",
-    "svg-pan-zoom": "^3.6.1"
+    "source-map-support": "^0.5.19",
+    "svg-pan-zoom": "^3.6.1",
+    "text-encoding": "^0.7.0"
   },
   "version": "0.1.0",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.svg=dataurl --public-path=/assets",
+    "build": "yarn run build:web && yarn run build:ssr",
+    "build:web": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.svg=dataurl --public-path=/assets",
+    "build:ssr": "node ./build-ssr.mjs",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

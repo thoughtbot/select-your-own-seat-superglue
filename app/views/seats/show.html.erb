@@ -4,5 +4,6 @@
   window.SUPERGLUE_INITIAL_PAGE_STATE=<%= initial_state.html_safe %>;
 </script>
 
-<div id="app"></div>
-
+<div id="app">
+  <%= Humid.render(initial_state).html_safe %>
+</div>
