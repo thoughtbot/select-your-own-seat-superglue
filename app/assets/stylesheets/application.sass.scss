@@ -50,3 +50,7 @@
 @import 'syos/utilities/padding';
 @import 'syos/utilities/text-align';
 @import 'syos/utilities/text-color';
+
+#app, .full-height {
+  height: 100%
+}
