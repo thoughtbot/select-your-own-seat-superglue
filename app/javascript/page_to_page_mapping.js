@@ -1,5 +1,6 @@
 // import your page component
 // e.g import PostsEdit from '../views/posts/edit'
+import SeatsIndex from '../views/seats/index'
 
 
 // Mapping between your props template to Component, you must add to this
@@ -8,5 +9,6 @@
 //
 // e.g {'posts/new': PostNew}
 export const pageIdentifierToPageComponent = {
+  'seats/index': SeatsIndex
 };
 
