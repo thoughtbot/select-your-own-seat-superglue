@@ -1,7 +1,35 @@
 import React from 'react'
 import { Layout } from '@javascript/components/Layout'
+import { useContent } from '@thoughtbot/superglue'
+
+type Section = {
+  seats: {
+    x: number
+    y: number
+  }[]
+}
+type ContentProps = {
+  venueName: string
+  sections:  Section[]
+}
+
+const buildSectionElements = (sections: Section[]) => {
+  return sections.map((section) => {
+    const seatElements = section.seats.map(({x, y}) => (
+      <svg width="12px" height="12px" viewBox="0 0 24 24" x={x} y={y}>
+        <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
+        <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
+      </svg>
+    ))
+
+    return <g>{seatElements}</g>
+  })
+}
 
 export default () => {
+  const { sections }  = useContent<ContentProps>()
+  const sectionElements = buildSectionElements(sections)
+
   return (
     <Layout>
       <header className="syos-site-frame__header syos-site-header">
@@ -24,6 +52,7 @@ export default () => {
               viewBox="0 0 1600 1600"
             >
               <rect fill="none" x="0" y="0" width="1600" height="1600"></rect>
+              { sectionElements }
             </svg>
           </div>
 
