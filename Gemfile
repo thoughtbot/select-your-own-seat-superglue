@@ -53,7 +53,10 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "factory_bot", "~> 5.0.0"
   gem "selenium-webdriver"
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem "webdrivers"
 end
 
 gem "cssbundling-rails", "~> 1.3"

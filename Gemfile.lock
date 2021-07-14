@@ -111,6 +111,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
     form_props (0.2.1)
       actionview (>= 7.0, < 9.0)
       activesupport (>= 7.0, < 9.0)
@@ -345,6 +347,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
     websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
@@ -372,6 +378,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails (~> 1.3)
   debug
+  factory_bot (~> 5.0.0)
   jsbundling-rails
   kamal
   pg (~> 1.1)
@@ -387,6 +394,7 @@ DEPENDENCIES
   thruster
   tzinfo-data
   web-console
+  webdrivers
 
 BUNDLED WITH
    2.5.6
