@@ -1,0 +1,5 @@
+json.array! Current.cart.seats do |seat|
+  json.id seat.id
+  json.rowNumber seat.row_number
+  json.price number_to_currency(seat.section.price / 100.0)
+end

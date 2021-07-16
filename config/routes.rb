@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :seats, only: [] do
+    resources :selections, only: [:create]
+  end
+
   root to: redirect("/venues/benedum_center/floors/orchestra/seats")
 end

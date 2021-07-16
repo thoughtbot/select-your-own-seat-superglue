@@ -1,5 +1,6 @@
 import React from 'react'
 import { Dialog } from './Dialog'
+import { ButtonTo, ButtonToProps } from './ButtonTo'
 import SVG from 'react-inlinesvg';
 import closeSvg from '../../assets/images/icons/x-circle.svg'
 
@@ -8,6 +9,7 @@ export type SeatDialogProps = {
   rowNumber: number
   price: string
   show: boolean
+  seatSelectionForm: ButtonToProps
 } | {
   show: false
 }
@@ -21,7 +23,8 @@ export const SeatDialog = (props: SeatDialogProps) => {
     sectionName,
     rowNumber,
     price,
-    show
+    show,
+    seatSelectionForm
   } = props
 
   return (
@@ -74,12 +77,8 @@ export const SeatDialog = (props: SeatDialogProps) => {
             </p>
           </div>
 
-          <div className="syos-inline-stack__item">
-            <button
-              className="syos-button"
-            >
-              Select
-            </button>
+          <div className="syos-inline-stack__item" >
+            <ButtonTo {...seatSelectionForm} />
           </div>
         </div>
       </footer>

@@ -28,4 +28,12 @@ class ApplicationController < ActionController::Base
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+
+  before_action do
+    cart_token = cookies[:cart_token]
+
+    Current.cart ||= Cart.create_or_find_by(token: cart_token)
+
+    cookies[:cart_token] ||= Current.cart.token
+  end
 end
