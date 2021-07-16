@@ -1,5 +1,6 @@
 import React from 'react'
 import { Layout } from '@javascript/components/Layout'
+import { Cart, CartItemProps } from '@javascript/components/Cart'
 import { SeatDialog, SeatDialogProps } from '@javascript/components/SeatDialog'
 import { useContent } from '@thoughtbot/superglue'
 
@@ -18,6 +19,7 @@ type ContentProps = {
   venueName: string
   sections:  Section[]
   seat: SeatDialogProps
+  cart: CartItemProps[]
 }
 
 const buildSectionElements = (sections: Section[]) => {
@@ -41,6 +43,7 @@ const buildSectionElements = (sections: Section[]) => {
 export default () => {
   const { 
     sections,
+    cart,
     seat
   }  = useContent<ContentProps>()
   const sectionElements = buildSectionElements(sections)
@@ -73,36 +76,7 @@ export default () => {
           </div>
 
           <div className="syos-frame__sidebar">
-            <div id="cart-summary">
-              <h2 className="syos-u-margin-bottom-2">
-                Your seat selections
-              </h2>
-
-              <p className="syos-u-font-size-small syos-u-margin-bottom-2">
-                Seats are not reserved until added to the cart.
-              </p>
-
-              <table className="syos-table">
-                <thead>
-                  <tr>
-                    <th>
-                      Seat
-                    </th>
-
-                    <th className="syos-table__cell--numerals">
-                     Price
-                    </th>
-
-                    <th className="visually-hidden">
-                      Remove
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                </tbody>
-              </table>
-            </div>
+            <Cart cart={cart} />
           </div>
         </section>
       </main>

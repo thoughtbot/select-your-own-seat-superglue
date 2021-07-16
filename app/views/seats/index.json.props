@@ -3,12 +3,20 @@ json.venueName venue.name
 json.sections(partial: ['sections', locals: local_assigns]) do
 end
 
+json.cart(partial: ['cart', locals: local_assigns]) do
+end
+
 json.seat do
   if local_assigns[:seat]
     json.show true
     json.sectionName seat.section.name
     json.rowNumber seat.row_number
     json.price number_to_currency(seat.section.price / 100.0)
+    json.seatSelectionForm do
+      form_props(url: seat_selections_path(seat)) do |f|
+        f.submit "Select"
+      end
+    end
   else
     json.show false
   end
