@@ -8,6 +8,7 @@ import SeatingLegend from '../../components/SeatingLegend'
 import FloorSwitcher from '../../components/FloorSwitcher'
 import Layout from '../../components/Layout'
 import { pagesSlice } from '../../javascript/slices/pages'
+import { urlToPageKey } from '@thoughtbot/superglue'
 
 const { setMaximum } = pagesSlice.actions
 
@@ -21,13 +22,29 @@ export default (props) => {
     floors,
     filters,
     pageKey,
+    copyPage,
+    navigateTo,
   } = props
 
   const dispatch = useDispatch()
 
   const handleFilter = (event, maximum) => {
-    dispatch(setMaximum({pageKey, maximum}))
     event.stopPropagation()
+    const nextUrl = new URL(document.location)
+
+    if (maximum !== Infinity) {
+      nextUrl.searchParams.set("maximum", maximum)
+      const nextPageKey = urlToPageKey(nextUrl.href)
+      copyPage({from: pageKey, to: nextUrl.href})
+      dispatch(setMaximum({pageKey: nextPageKey, maximum}))
+
+      navigateTo(nextUrl.href)
+    } else {
+      nextUrl.searchParams.delete("maximum")
+      navigateTo(pageKey, {
+        action: 'replace'
+      })
+    }
   }
 
   return (
