@@ -2,14 +2,18 @@
   "name": "select_your_own_seat",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
-    "breakpoint-sass": "2.7.1",
-    "stimulus": "^1.1.1",
-    "turbolinks": "^5.2.0"
+    "@reduxjs/toolkit": "^1.9.5",
+    "@thoughtbot/superglue": "^0.41.0",
+    "esbuild": "^0.19.3",
+    "history": "^5.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.10.3"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --public-path=/assets"
   }
 }
