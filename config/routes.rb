@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :venues, only: [] do
     resources :floors, only: [] do
-      resources :seats, only: [:index]
+      resources :seats, only: [:index, :show]
     end
   end
 

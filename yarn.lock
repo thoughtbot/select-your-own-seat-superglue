@@ -298,6 +298,11 @@ detect-libc@^1.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==
 
+dialog-polyfill@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/dialog-polyfill/-/dialog-polyfill-0.5.6.tgz#7507b4c745a82fcee0fa07ce64d835979719599a"
+  integrity sha512-ZbVDJI9uvxPAKze6z146rmfUZjBqNEwcnFTVamQzXH+svluiV7swmVIGr7miwADgfgt1G2JQIytypM9fbyhX4w==
+
 esbuild@^0.25.1:
   version "0.25.1"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.25.1.tgz#a16b8d070b6ad4871935277bda6ccfe852e3fa2f"

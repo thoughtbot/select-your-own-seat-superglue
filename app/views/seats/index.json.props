@@ -1,12 +1,15 @@
 json.venueName venue.name
 
-json.sections do
-  json.array! sections do |section|
-    json.seats do
-      json.array! section.seats do |seat|
-        json.x seat.x
-        json.y seat.y
-      end
-    end
+json.sections(partial: ['sections', locals: local_assigns]) do
+end
+
+json.seat do
+  if local_assigns[:seat]
+    json.show true
+    json.sectionName seat.section.name
+    json.rowNumber seat.row_number
+    json.price number_to_currency(seat.section.price / 100.0)
+  else
+    json.show false
   end
 end

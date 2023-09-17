@@ -1,0 +1,10 @@
+json.array! sections do |section|
+  json.seats do
+    json.array! section.seats do |seat|
+      json.x seat.x
+      json.y seat.y
+      json.venueFloorSeatPath venue_floor_seat_path(venue, floor, seat.row_number)
+      json.ariaLabel seat.row_number
+    end
+  end
+end
