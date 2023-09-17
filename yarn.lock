@@ -400,6 +400,18 @@ react-dom@^19.0.0:
   dependencies:
     scheduler "^0.25.0"
 
+react-from-dom@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.7.5.tgz#2d2d2bf6d80149c053bcf71bb6615e5e7f6d23db"
+  integrity sha512-CO92PmMKo/23uYPm6OFvh5CtZbMgHs/Xn+o095Lz/TZj9t8DSDhGdSOMLxBxwWI4sr0MF17KUn9yJWc5Q00R/w==
+
+react-inlinesvg@^4.1.5:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-4.2.0.tgz#79e41579459a0a535d0f7674050a252085cdf157"
+  integrity sha512-V59P6sFU7NACIbvoay9ikYKVFWyIIZFGd7w6YT1m+H7Ues0fOI6B6IftE6NPSYXXv7RHVmrncIyJeYurs3OJcA==
+  dependencies:
+    react-from-dom "^0.7.5"
+
 react-redux@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-9.2.0.tgz#96c3ab23fb9a3af2cb4654be4b51c989e32366f5"
