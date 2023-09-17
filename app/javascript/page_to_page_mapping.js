@@ -9,6 +9,7 @@ import SeatsIndex from '../views/seats/index'
 //
 // e.g {'posts/new': PostNew}
 export const pageIdentifierToPageComponent = {
-  'seats/index': SeatsIndex
+  'seats/index': SeatsIndex,
+  'seats/show': SeatsIndex,
 };
 

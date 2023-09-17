@@ -1,0 +1,11 @@
+json.venue_name venue.name
+
+json.sections(partial: ['sections', locals: local_assigns]) do
+end
+
+json.seat do
+  json.show true
+  json.section_name seat.section.name
+  json.row_number seat.row_number
+  json.price number_to_currency(seat.section.price / 100.0)
+end

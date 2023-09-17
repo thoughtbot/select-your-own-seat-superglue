@@ -1,28 +1,38 @@
 import React from 'react'
 import Layout from '../../components/Layout'
+import SeatDialog from '../../components/SeatDialog'
 
 const buildSectionElements = (sections) => {
-  return sections.map((section) => {
-    const seatElements = section.seats.map(({x, y}) => (
-      <svg width="12px" height="12px" viewBox="0 0 24 24" x={x} y={y}>
-        <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
-        <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
-      </svg>
+  return sections.map((section, index) => {
+    const seatElements = section.seats.map((seat) => (
+      <a
+        href={seat.venueFloorSeatPath}
+        aria-label={seat.ariaLabel}
+        key={seat.venueFloorSeatPath}
+       >
+        <svg width="12px" height="12px" viewBox="0 0 24 24" x={seat.x} y={seat.y}>
+          <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
+          <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
+        </svg>
+      </a>
     ))
 
-    return <g>{seatElements}</g>
+    return <g key={index}>{seatElements}</g>
   })
 }
 
 export default (props) => {
   const {
-    sections
+    venueName,
+    sections,
+    seat
   } = props
 
   const sectionElements = buildSectionElements(sections)
 
   return (
     <Layout {...props}>
+      <SeatDialog {...seat} />
       <header className="syos-site-frame__header syos-site-header">
         <p className="syos-site-header__subtext">
           Venue Name

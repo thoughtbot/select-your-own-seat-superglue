@@ -6,6 +6,7 @@
     "@thoughtbot/superglue": "^0.50.0",
     "breakpoint-sass": "^3.0.0",
     "esbuild": "^0.19.3",
+    "dialog-polyfill": "^0.5.6",
     "history": "^5.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
