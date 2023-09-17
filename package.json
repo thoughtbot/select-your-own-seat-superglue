@@ -6,15 +6,15 @@
     "@thoughtbot/superglue": "~1.0.0",
     "breakpoint-sass": "^3.0.0",
     "esbuild": "^0.19.3",
-    "dialog-polyfill": "^0.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-inlinesvg": "^4.1.5",
     "react-redux": "^9.2.0",
     "sass": "^1.69.0"
   },
   "version": "0.1.0",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.svg=dataurl --public-path=/assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "devDependencies": {
