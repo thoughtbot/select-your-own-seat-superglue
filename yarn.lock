@@ -129,10 +129,10 @@
     redux-thunk "^2.4.2"
     reselect "^4.1.8"
 
-"@thoughtbot/superglue@^0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@thoughtbot/superglue/-/superglue-0.41.0.tgz#fa02bb38b4897798f95473ad493cbdf33356d074"
-  integrity sha512-jRbZd1lN9Qiw53pq5ADnJw39dZ8od4zeaXzusRc2IhcKzQY+bs0P4kid/EUvWWdSeAtLDPxpMdesRtCvnhkTlw==
+"@thoughtbot/superglue@^0.50.0":
+  version "0.50.0"
+  resolved "https://registry.yarnpkg.com/@thoughtbot/superglue/-/superglue-0.50.0.tgz#db5fd185c0e4a34f23c77b6e406ce07bfb0d27a2"
+  integrity sha512-ngdGZq9PqRSYLpiLxv2MnbR8WZXOcPtAWjnbD9734L1QZdwCk53ESaOtCJauIHbQzXbWX6H8JdduqMOYajD52A==
   dependencies:
     abortcontroller-polyfill "^1.7.3"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
