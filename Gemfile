@@ -43,8 +43,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "jsbundling-rails", "~> 1.2"
-
 gem "cssbundling-rails", "~> 1.3"
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'superglue', ">= 0.53.0"
 
+gem "form_props", "~> 0.0.5"
