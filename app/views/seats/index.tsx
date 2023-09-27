@@ -4,6 +4,7 @@ import { Cart, CartItemProps } from '@javascript/components/Cart'
 import { SeatDialog, SeatDialogProps } from '@javascript/components/SeatDialog'
 import { useContent } from '@thoughtbot/superglue'
 import { SeatingMap, Section } from '@javascript/components/SeatingMap'
+import { SeatingLegend } from '@javascript/components/SeatingLegend'
 
 type ContentProps = {
   venueName: string
@@ -32,6 +33,7 @@ export default () => {
         <section className="syos-frame">
           <div className="syos-frame__map">
             <SeatingMap sections={sections}/>
+            <SeatingLegend/>
           </div>
           <div className="syos-frame__sidebar">
             <Cart cart={cart} />
