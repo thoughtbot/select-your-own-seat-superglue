@@ -1,0 +1,31 @@
+json.venue_name venue.name
+
+json.sections(partial: ["sections", locals: local_assigns]) do
+end
+
+json.floors(partial: ['floors', locals: local_assigns]) do
+end
+
+json.cart(partial: ['cart', locals: local_assigns]) do
+end
+
+json.seat do
+  json.show true
+  json.section_name seat.section.name
+  json.row_number seat.row_number
+  json.price number_to_currency(seat.section.price / 100.0)
+
+  if Current.cart.include?(seat)
+    json.seat_selection_form do
+      form_props(url: seat_selections_path(seat), method: :delete) do |f|
+        f.submit(text: "Remove")
+      end
+    end
+  else
+    json.seat_selection_form do
+      form_props(url: seat_selections_path(seat)) do |f|
+        f.submit(text: "Select")
+      end
+    end
+  end
+end

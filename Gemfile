@@ -49,3 +49,4 @@ gem "cssbundling-rails", "~> 1.3"
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'superglue'
+gem 'active_link_to'

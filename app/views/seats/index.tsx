@@ -5,19 +5,22 @@ import { SeatDialog, SeatDialogProps } from '@javascript/components/SeatDialog'
 import { useContent } from '@thoughtbot/superglue'
 import { SeatingMap, Section } from '@javascript/components/SeatingMap'
 import { SeatingLegend } from '@javascript/components/SeatingLegend'
+import { FloorSwitcher, FloorProps } from '@javascript/components/FloorSwitcher'
 
 type ContentProps = {
   venueName: string
   sections:  Section[]
   seat: SeatDialogProps
   cart: CartItemProps[]
+  floors: FloorProps[]
 }
 
 export default () => {
   const { 
     sections,
     cart,
-    seat
+    seat,
+    floors
   } = useContent<ContentProps>()
 
   return (
@@ -32,6 +35,7 @@ export default () => {
       <main className="syos-site-frame__main">
         <section className="syos-frame">
           <div className="syos-frame__map">
+            <FloorSwitcher floors={floors}/>
             <SeatingMap sections={sections}/>
             <SeatingLegend/>
           </div>
