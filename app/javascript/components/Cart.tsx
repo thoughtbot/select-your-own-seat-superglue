@@ -6,7 +6,7 @@ import { FormProps } from './inputs';
 
 export type CartItemProps = {
   id: number
-  rowNumber: number
+  description: string
   price: string
   removeSeatForm: FormProps
 }
@@ -16,9 +16,9 @@ export type CartProps = {
 }
 
 export const Cart = (props: CartProps) => {
-  const cartItems = props.cart.map(({rowNumber, price, id, removeSeatForm}) => (
+  const cartItems = props.cart.map(({description, price, id, removeSeatForm}) => (
     <tr key={id}>
-      <td> {rowNumber} </td>
+      <td> {description} </td>
       <td className="syos-table__cell--numerals"> {price} </td>
       <td className="syos-u-text-align-right">
         <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">
