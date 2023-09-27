@@ -10,6 +10,8 @@ export type Seat = {
 }
 
 export type Section = {
+  opacity: string
+  hidden: boolean
   seats: Seat[]
 }
 
@@ -29,8 +31,17 @@ const buildSectionElements = (sections: Section[]) => {
           y={seat.y}
         />
       </a>
-    ));
-    return <g key={index}>{seatElements}</g>
+    ))
+
+    return (
+      <g
+        key={index}
+        opacity={section.opacity}
+        aria-hidden={section.hidden}
+      >
+        {seatElements}
+      </g>
+    )
   })
 }
 

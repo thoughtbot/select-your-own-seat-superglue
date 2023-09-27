@@ -9,6 +9,9 @@ end
 json.cart(partial: ['cart', locals: local_assigns]) do
 end
 
+json.filters(partial: ['filters', locals: local_assigns]) do
+end
+
 json.seat do
   json.show true
   json.section_name seat.section.name
