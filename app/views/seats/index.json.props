@@ -3,6 +3,9 @@ json.venue_name venue.name
 json.sections(partial: ['sections', locals: local_assigns]) do
 end
 
+json.floors(partial: ['floors', locals: local_assigns]) do
+end
+
 json.cart(partial: ['cart', locals: local_assigns]) do
 end
 

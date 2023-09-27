@@ -1,0 +1,7 @@
+json.array! venue.floors do |floor|
+  floor_path = venue_floor_seats_path(venue, floor)
+
+  json.path floor_path
+  json.name floor.name
+  json.class_name active_link_to_class(floor_path)
+end
