@@ -1,6 +1,7 @@
 import React from 'react'
 import { Layout } from '@javascript/components/Layout'
 import { Cart, CartItemProps } from '@javascript/components/Cart'
+import { SeatFilter, SeatFilterProps } from '@javascript/components/SeatFilter'
 import { SeatDialog, SeatDialogProps } from '@javascript/components/SeatDialog'
 import { useContent } from '@thoughtbot/superglue'
 import { SeatingMap, Section } from '@javascript/components/SeatingMap'
@@ -13,6 +14,9 @@ type ContentProps = {
   seat: SeatDialogProps
   cart: CartItemProps[]
   floors: FloorProps[]
+  filters: {
+    filterForm: SeatFilterProps
+  }
 }
 
 export default () => {
@@ -20,7 +24,8 @@ export default () => {
     sections,
     cart,
     seat,
-    floors
+    floors,
+    filters
   } = useContent<ContentProps>()
 
   return (
@@ -40,6 +45,7 @@ export default () => {
             <SeatingLegend/>
           </div>
           <div className="syos-frame__sidebar">
+            <SeatFilter {...filters} />
             <Cart cart={cart} />
           </div>
         </section>
