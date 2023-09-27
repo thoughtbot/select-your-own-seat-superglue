@@ -2,6 +2,7 @@ import React from 'react'
 import SeatDialog from '../../components/SeatDialog'
 import Cart from '../../components/Cart'
 import SeatingMap from '../../components/SeatingMap'
+import SeatingLegend from '../../components/SeatingLegend'
 import Layout from '../../components/Layout'
 
 export default (props) => {
@@ -26,6 +27,7 @@ export default (props) => {
           className="syos-frame"
         >
           <div className="syos-frame__map">
+            <SeatingLegend />
             <SeatingMap sections={sections} />
           </div>
           <div className="syos-frame__sidebar">
