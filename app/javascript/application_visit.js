@@ -1,4 +1,7 @@
 import { visit, remote } from '@thoughtbot/superglue/action_creators'
+import { pagesSlice } from './slices/pages'
+
+const { showLoading, hideLoading } = pagesSlice.actions
 
 export function buildVisitAndRemote(ref, store) {
   const appRemote = (...args) => {
@@ -9,7 +12,8 @@ export function buildVisitAndRemote(ref, store) {
     // Do something before
     // e.g, show loading state, you can access the current pageKey
     // via store.getState().superglue.currentPageKey
-    let { action } = args
+    const { currentPageKey } = store.getState().superglue
+    store.dispatch(showLoading({ pageKey: currentPageKey }))
 
     return store
       .dispatch(visit(...args))
@@ -32,6 +36,7 @@ export function buildVisitAndRemote(ref, store) {
         // Do something after
         // e.g, hide loading state, you can access the changed pageKey
         // via getState().superglue.currentPageKey
+        store.dispatch(hideLoading({ pageKey: currentPageKey }))
       })
       .catch((err) => {
         const response = err.response
