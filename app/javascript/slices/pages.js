@@ -4,6 +4,14 @@ import { saveResponse, beforeVisit } from '../actions'
 export const pagesSlice = createSlice({
   name: 'pages',
   reducers: {
+    setMaximum: (state, action) => {
+      const {
+        pageKey,
+        maximum
+      } = action.payload
+
+      state[pageKey].data.seatingMap.maximum = maximum
+    },
     showLoading: (state, action) => {
       const {pageKey} = action.payload;
       const { seatingMap } = state[pageKey].data

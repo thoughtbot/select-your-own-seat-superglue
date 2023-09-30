@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import SeatDialog from '../../components/SeatDialog'
 import SeatFilter from '../../components/SeatFilter'
 import Cart from '../../components/Cart'
@@ -6,6 +7,9 @@ import SeatingMap from '../../components/SeatingMap'
 import SeatingLegend from '../../components/SeatingLegend'
 import FloorSwitcher from '../../components/FloorSwitcher'
 import Layout from '../../components/Layout'
+import { pagesSlice } from '../../javascript/slices/pages'
+
+const { setMaximum } = pagesSlice.actions
 
 export default (props) => {
   const {
@@ -16,7 +20,15 @@ export default (props) => {
     seat,
     floors,
     filters,
+    pageKey,
   } = props
+
+  const dispatch = useDispatch()
+
+  const handleFilter = (event, maximum) => {
+    dispatch(setMaximum({pageKey, maximum}))
+    event.stopPropagation()
+  }
 
   return (
     <Layout {...props}>
@@ -37,7 +49,7 @@ export default (props) => {
             <SeatingMap {...seatingMap} />
           </div>
           <div className="syos-frame__sidebar">
-            <SeatFilter {...filters} />
+            <SeatFilter {...filters} onFilter={handleFilter}/>
             <Cart cart={cart} />
           </div>
         </section>
