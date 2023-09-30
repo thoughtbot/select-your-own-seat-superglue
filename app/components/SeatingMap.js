@@ -72,13 +72,17 @@ export default class extends React.Component {
   }
 
   render() {
-    const { sections } = this.props
+    const { 
+      sections,
+      loading
+    } = this.props
     const sectionElements = buildSectionElements(sections)
+    const loadingClass = loading && 'is-loading'
 
     return(
       <>
         <div
-          className="syos-frame__map-overlay syos-loader-overlay is-loading"
+          className={`syos-frame__map-overlay syos-loader-overlay ${loadingClass}`}
           aria-hidden="true"
         >
           <SVG src={ loadingSvg } className="syos-icon" title="zoom in"/>

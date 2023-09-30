@@ -1,4 +1,5 @@
 json.floor floor.name
+json.loading false
 
 json.sections do
   json.array! sections do |section|
