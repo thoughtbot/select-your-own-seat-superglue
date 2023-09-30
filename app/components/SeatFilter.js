@@ -4,14 +4,16 @@ import uncheckedSvg from '../assets/images/icons/circle.svg'
 import checkedSvg from '../assets/images/icons/check-circle.svg'
 
 const MaxRadioButton = (props) => {
-  const { label, ...rest} = props
+  const { label, onFilter, ...rest} = props
+  const ref = React.createRef()
 
   return (
     <>
       <input
         {...rest}
         className="syos-tile-controls__input"
-        ref={React.createRef()}
+        ref={ref}
+        onChange={(event) => onFilter(event, Number(ref.current.value))}
       />
       <label className="syos-tile-controls__control" htmlFor={rest.id}>
         <SVG src={ uncheckedSvg } className="syos-icon syos-tile-controls__icon syos-tile-controls__icon--unselected" aria-hidden={true}/>
@@ -26,11 +28,12 @@ export default class extends React.Component {
   render () {
     const {
       filterForm,
+      onFilter,
     } = this.props
 
     const controlElements = Object
       .values(filterForm.inputs)
-      .map((inputProps) => <MaxRadioButton {...inputProps} />);
+      .map((inputProps) => <MaxRadioButton {...inputProps} onFilter={onFilter} key={inputProps.id} />);
 
     return (
       <form {...filterForm.props}>
