@@ -36,7 +36,7 @@ export default class extends React.Component {
       .map((inputProps) => <MaxRadioButton {...inputProps} onFilter={onFilter} key={inputProps.id} />);
 
     return (
-      <form {...filterForm.props}>
+      <form {...filterForm.props} onReset={(event) => onFilter(event, Infinity)}>
         <fieldset className="syos-u-margin-bottom-6">
           <legend className="syos-u-margin-bottom-2 syos-inline-stack">
             <h2 className="syos-inline-stack__item">
