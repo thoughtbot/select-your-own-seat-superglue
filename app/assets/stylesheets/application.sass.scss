@@ -1,9 +1,9 @@
+@import 'breakpoint-sass/stylesheets/breakpoint';
 @import 'generic/reset';
 @import 'generic/hidden';
 @import 'generic/box-sizing';
 @import 'generic/images';
 
-@import 'breakpoint';
 @import 'syos/vendor/turbolinks';
 
 @import 'library/general-mixins';

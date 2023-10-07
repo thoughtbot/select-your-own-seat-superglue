@@ -9,8 +9,6 @@ gem 'rails', '~> 7'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
@@ -45,5 +43,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "jsbundling-rails", "~> 1.2"
-gem "breakpoint", "~>2.4.0"
+
+gem "cssbundling-rails", "~> 1.3"
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
