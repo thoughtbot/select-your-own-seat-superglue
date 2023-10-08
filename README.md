@@ -1,24 +1,48 @@
-# README
+Select Your Own Seat
+===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is an example of how to develop an interactive web page using:
 
-Things you may want to cover:
+* Rails
+* Superglue
+* Superglue' Unobtrustive JavaScript
+* React
+* Redux
 
-* Ruby version
+The commit history is intentionally meticulous and verbose, and serves to compare
+and contrast with equivalent [commits] built in [Stimulus and Turbo].
 
-* System dependencies
 
-* Configuration
+The intent behind this repository is to:
 
-* Database creation
+* demonstrate how egronomics can be markedly simliar between the normal rails
+  version and superglue version.
+* serve as an example of real-world application built with all the conviences of a
+  server-rendered monolith with React.
+* demonstrate how, despite written in react, that ultimately we rely on knowledge
+  of boring standards based HTML.
+* demonstrate the strengths as well as weakenesses of both approaches.
 
-* Database initialization
+For more context please see the [Stimulus and Turbo] version of the repo
 
-* How to run the test suite
+[commits]: https://github.com/seanpdoyle/select-your-own-seat/commits/main
+[Stimulus and Turbo]: https://github.com/seanpdoyle/select-your-own-seat
 
-* Services (job queues, cache servers, search engines, etc.)
+---
 
-* Deployment instructions
+To develop the application locally, check it out with `git` then run the setup
+script:
 
-* ...
+```bash
+$ git clone git@github.com:thoughtbot/select-your-own-seat-superglue.git
+$ cd select-your-own-seat-superglue
+$ bin/setup
+$ yarn install
+$ yarn run build
+$ yarn run build:css
+$ rails server
+```
+
+Once the `rails server` command is running, visit the page at
+<http://localhost:3000>.
+
