@@ -1,15 +1,21 @@
 render(template: "seats/index", locals: local_assigns)
 
-json.cart(partial: ['cart', locals: local_assigns]) do
-end
-
 json.seat do
   json.sectionName seat.section.name
   json.rowNumber seat.row_number
   json.price number_to_currency(seat.section.price / 100.0)
-  json.seatSelectionForm do
-    form_props(url: seat_selections_path(seat)) do |f|
-      f.submit
+
+  if Current.cart.include?(seat)
+    json.seatSelectionForm do
+      form_props(url: seat_selections_path(seat), method: :delete) do |f|
+        f.submit(text: "Remove")
+      end
+    end
+  else
+    json.seatSelectionForm do
+      form_props(url: seat_selections_path(seat)) do |f|
+        f.submit(text: "Select")
+      end
     end
   end
 end
