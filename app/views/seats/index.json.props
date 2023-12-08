@@ -1,12 +1,4 @@
 json.venueName venue.name
 
-json.sections do
-  json.array! sections do |section|
-    json.seats do
-      json.array! section.seats do |seat|
-        json.x seat.x
-        json.y seat.y
-      end
-    end
-  end
+json.sections(partial: ['sections', locals: local_assigns]) do
 end
