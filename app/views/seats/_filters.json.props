@@ -1,0 +1,14 @@
+json.filterForm do
+  form_props(
+    url: venue_floor_seats_path(venue, floor),
+    method: :get
+  ) do |f|
+    [5_00, 10_00, 15_00, nil].each_cons(2).to_a.each do |max_nmax|
+      maximum = max_nmax[0]
+      next_maximum = max_nmax[1]
+      checked = params[:maximum].to_i == maximum || [params[:maximum], next_maximum].none?
+
+      f.radio_button(:maximum, maximum, checked: checked, label: number_to_currency(maximum / 100.0))
+    end
+  end
+end
