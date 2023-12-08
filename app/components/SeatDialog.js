@@ -1,5 +1,6 @@
 import React from 'react'
 import Dialog from './Dialog'
+import ButtonTo from './ButtonTo'
 import SVG from 'react-inlinesvg';
 import closeSvg from '../assets/images/icons/x-circle.svg'
 
@@ -9,6 +10,7 @@ export default class extends React.Component {
       sectionName,
       rowNumber,
       price,
+      seatSelectionForm
     } = this.props
 
     return (
@@ -61,12 +63,8 @@ export default class extends React.Component {
               </p>
             </div>
 
-            <div className="syos-inline-stack__item">
-              <button
-                className="syos-button"
-              >
-                Select
-              </button>
+            <div className="syos-inline-stack__item" >
+              <ButtonTo {...seatSelectionForm} />
             </div>
           </div>
         </footer>
