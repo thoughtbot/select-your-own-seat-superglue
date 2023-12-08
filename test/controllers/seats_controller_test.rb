@@ -33,8 +33,8 @@ class SeatsControllerTest < ActionDispatch::IntegrationTest
     get venue_floor_seats_path(venue, floor, maximum: maximum, format: :json)
 
     json = JSON.parse(body)
-    assert_equal json["data"]["sections"][0]["opacity"], "1.0"
-    assert_equal json["data"]["sections"][0]["hidden"], false
+    assert_equal json["data"]["seatingMap"]["sections"][0]["opacity"], "1.0"
+    assert_equal json["data"]["seatingMap"]["sections"][0]["hidden"], false
   end
 
   test "#index when excluding sections when filtering by price" do
@@ -48,8 +48,8 @@ class SeatsControllerTest < ActionDispatch::IntegrationTest
     get venue_floor_seats_path(venue, floor, maximum: maximum, format: :json)
 
     json = JSON.parse(body)
-    assert_equal json["data"]["sections"][0]["opacity"], "0.3"
-    assert_equal json["data"]["sections"][0]["hidden"], true
+    assert_equal json["data"]["seatingMap"]["sections"][0]["opacity"], "0.3"
+    assert_equal json["data"]["seatingMap"]["sections"][0]["hidden"], true
   end
 
   test "#index with a ?maximum query parameter" do

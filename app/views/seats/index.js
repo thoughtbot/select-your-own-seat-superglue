@@ -12,6 +12,7 @@ export default (props) => {
     venueName,
     sections,
     cart,
+    seatingMap,
     seat,
     floors,
     filters,
@@ -33,7 +34,7 @@ export default (props) => {
           <div className="syos-frame__map">
             <FloorSwitcher floors={floors}/>
             <SeatingLegend />
-            <SeatingMap sections={sections} />
+            <SeatingMap {...seatingMap} />
           </div>
           <div className="syos-frame__sidebar">
             <SeatFilter {...filters} />
