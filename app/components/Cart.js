@@ -5,9 +5,9 @@ import ButtonTo from './ButtonTo'
 
 export default class extends React.Component {
   render () {
-    const cartItems = this.props.cart.map(({rowNumber, price, removeSeatForm, id}) => (
+    const cartItems = this.props.cart.map(({description, price, removeSeatForm, id}) => (
       <tr key={id}>
-        <td> {rowNumber} </td>
+        <td> {description} </td>
         <td className="syos-table__cell--numerals"> {price} </td>
         <td className="syos-u-text-align-right">
           <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">

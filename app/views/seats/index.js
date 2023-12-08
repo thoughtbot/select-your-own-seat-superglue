@@ -3,6 +3,7 @@ import SeatDialog from '../../components/SeatDialog'
 import Cart from '../../components/Cart'
 import SeatingMap from '../../components/SeatingMap'
 import SeatingLegend from '../../components/SeatingLegend'
+import FloorSwitcher from '../../components/FloorSwitcher'
 import Layout from '../../components/Layout'
 
 export default (props) => {
@@ -11,6 +12,7 @@ export default (props) => {
     sections,
     cart,
     seat,
+    floors,
   } = props
 
   return (
@@ -27,6 +29,7 @@ export default (props) => {
           className="syos-frame"
         >
           <div className="syos-frame__map">
+            <FloorSwitcher floors={floors}/>
             <SeatingLegend />
             <SeatingMap sections={sections} />
           </div>
