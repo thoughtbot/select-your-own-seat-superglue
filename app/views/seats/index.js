@@ -63,7 +63,7 @@ export default (props) => {
           <div className="syos-frame__map">
             <FloorSwitcher floors={floors}/>
             <SeatingLegend />
-            <SeatingMap {...seatingMap} />
+            <SeatingMap {...seatingMap} pageKey={pageKey}/>
           </div>
           <div className="syos-frame__sidebar">
             <SeatFilter {...filters} onFilter={handleFilter}/>

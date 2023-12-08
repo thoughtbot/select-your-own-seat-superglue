@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createRoot } from 'react-dom/client';
+import { hydrateRoot } from 'react-dom/client';
 import { ApplicationBase } from '@thoughtbot/superglue';
 import { buildVisitAndRemote } from './application_visit';
 import { pageIdentifierToPageComponent } from './page_to_page_mapping';
@@ -26,8 +26,7 @@ if (typeof window !== "undefined") {
     const location = window.location;
 
     if (appEl) {
-      const root = createRoot(appEl);
-      root.render(
+      hydrateRoot(appEl,
         <Application
           appEl={appEl}
           // The base url prefixed to all calls made by the `visit`

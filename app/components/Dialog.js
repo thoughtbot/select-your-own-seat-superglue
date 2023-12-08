@@ -1,5 +1,4 @@
 import React from 'react'
-import dialogPolyfill from "dialog-polyfill"
 
 export default class extends React.Component {
   constructor(props) {
@@ -8,6 +7,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    const dialogPolyfill = require('dialog-polyfill')
     dialogPolyfill.registerDialog(this.dialog.current)
     this.dialog.current.open = this.props.open
     this.dialog.current.showModal()

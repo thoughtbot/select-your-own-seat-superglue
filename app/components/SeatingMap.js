@@ -1,5 +1,4 @@
 import React from 'react'
-import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from './SvgZoomControls'
 import SVG from 'react-inlinesvg';
 import loadingSvg from '../assets/images/icons/loader.svg'
@@ -66,6 +65,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    const svgPanZoom = require('svg-pan-zoom')
     this.map = svgPanZoom(this.svgRef.current, {
       center: true,
       fit: true,
