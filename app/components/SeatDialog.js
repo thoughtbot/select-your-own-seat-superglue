@@ -1,5 +1,7 @@
 import React from 'react'
 import Dialog from './Dialog'
+import SVG from 'react-inlinesvg';
+import closeSvg from '../assets/images/icons/x-circle.svg'
 
 export default class extends React.Component {
   render () {
@@ -17,26 +19,8 @@ export default class extends React.Component {
           </h2>
 
           <form method="dialog">
-            <button
-              className="syos-button syos-button--transparent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                className="syos-icon syos-icon--large"
-                title="Close modal"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
+            <button className="syos-button syos-button--transparent">
+              <SVG src={ closeSvg } />
             </button>
           </form>
         </header>
