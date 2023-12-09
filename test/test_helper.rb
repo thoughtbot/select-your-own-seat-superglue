@@ -9,6 +9,7 @@ class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
 
   FactoryBot.find_definitions
+  Humid.create_context
 
   # Add more helper methods to be used by all tests here...
 end
