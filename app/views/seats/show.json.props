@@ -7,7 +7,7 @@ json.seat do
 
   if Current.cart.include?(seat)
     json.seatSelectionForm do
-      form_props(url: seat_selections_path(seat), method: :delete) do |f|
+      form_props(url: seat_selection_path(seat), method: :delete) do |f|
         f.submit(text: "Remove")
       end
     end
