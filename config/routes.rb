@@ -11,4 +11,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :venues, only: [] do
+    resources :floors, only: [] do
+      resources :seats, only: [:index]
+    end
+  end
+
+  root to: redirect("/venues/benedum_center/floors/orchestra/seats")
 end
