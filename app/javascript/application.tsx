@@ -18,6 +18,7 @@ if (typeof window !== "undefined") {
       const root = createRoot(appEl);
       root.render(
         <Application
+          className="full-height"
           // The base url prefixed to all calls made by the `visit`
           // and `remote` thunks.
           baseUrl={location.origin}
