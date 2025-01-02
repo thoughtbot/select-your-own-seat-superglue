@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
+import svgPanZoom from 'svg-pan-zoom'
 
 export type Seat = {
   x: number
@@ -47,6 +48,22 @@ const buildSectionElements = (sections: Section[]) => {
 
 export const SeatingMap = ({ sections }: { sections: Section[] }) => {
   const sectionElements = buildSectionElements(sections)
+  const svgRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    const map = svgRef.current && svgPanZoom(svgRef.current, {
+      center: true,
+      fit: true,
+      zoomEnabled: false,
+      zoomScaleSensitivity: 0.75,
+      minZoom: 1.0,
+      maxZoom: 8,
+    })
+
+    return () => {
+      map?.destroy()
+    }
+  }, [])
 
   return (
     <svg
@@ -56,6 +73,7 @@ export const SeatingMap = ({ sections }: { sections: Section[] }) => {
       width="1600px"
       height="1600px"
       viewBox="0 0 1600 1600"
+      ref={svgRef}
     >
       <rect fill="none" x="0" y="0" width="1600" height="1600"></rect>
       <svg style={{ display: "none" }}>
