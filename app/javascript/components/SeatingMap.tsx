@@ -27,6 +27,7 @@ const buildSectionElements = (sections: Section[]) => {
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
         key={seat.venueFloorSeatPath}
+        data-sg-visit
       >
         <use
           width="12px"
