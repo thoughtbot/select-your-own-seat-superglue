@@ -12,6 +12,7 @@ type ContentProps = {
   venueName: string
   seatingMap: {
     sections:  Section[]
+    floorName: string
   }
   seat: SeatDialogProps
   cart: CartItemProps[]
