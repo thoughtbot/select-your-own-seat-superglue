@@ -60,8 +60,8 @@ class SeatsControllerTest < ActionDispatch::IntegrationTest
     get venue_floor_seats_path(venue, floor, maximum: maximum, format: :json)
 
     json = JSON.parse(body)
-    assert_equal json["data"]["filters"]["controls"][1]["maximum"], maximum
-    assert_equal json["data"]["filters"]["controls"][1]["isChecked"], true
+
+    assert_equal json["data"]["filters"]["filterForm"]["inputs"]["maximum1000"]["defaultChecked"], true
   end
 
   test "#index without a ?maximum query parameter" do
@@ -71,7 +71,7 @@ class SeatsControllerTest < ActionDispatch::IntegrationTest
     get venue_floor_seats_path(venue, floor, format: :json)
 
     json = JSON.parse(body)
-    assert_equal json["data"]["filters"]["controls"][2]["maximum"], 1500
-    assert_equal json["data"]["filters"]["controls"][2]["isChecked"], true
+
+    assert_equal json["data"]["filters"]["filterForm"]["inputs"]["maximum1500"]["defaultChecked"], true
   end
 end
