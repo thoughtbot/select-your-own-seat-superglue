@@ -24,7 +24,7 @@ export const FloorSwitcher = (props: {floors: FloorProps[]}) => {
           {
             floors.map(({path, name, className}) => (
               <li className="syos-block-stack__item" key={path}>
-                <a href={path} className={className}>{name}</a>
+                <a href={path} className={className} data-sg-visit>{name}</a>
               </li>
             ))
           }

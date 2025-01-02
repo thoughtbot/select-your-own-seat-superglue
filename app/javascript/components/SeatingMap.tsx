@@ -47,7 +47,7 @@ const buildSectionElements = (sections: Section[]) => {
   })
 }
 
-export const SeatingMap = ({ sections }: { sections: Section[] }) => {
+export const SeatingMap = ({ sections, floorName }: { sections: Section[], floorName: string }) => {
   const sectionElements = buildSectionElements(sections)
   const svgRef = useRef<SVGSVGElement>(null)
   const [map, setMap] = useState<SvgPanZoom.Instance | null>(null)
@@ -71,6 +71,10 @@ export const SeatingMap = ({ sections }: { sections: Section[] }) => {
       setMap(null)
     }
   }, [])
+
+  useEffect(() => {
+    map?.reset()
+  }, [floorName])
 
   const zoomIn = () => map?.zoomIn()
   const zoomOut = () => map?.zoomOut()
