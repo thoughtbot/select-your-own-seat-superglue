@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
 import svgPanZoom from 'svg-pan-zoom'
 import { SvgZoomControls } from "./SvgZoomControls"
+import SVG from 'react-inlinesvg';
+import loadingSvg from '../../assets/images/icons/loader.svg'
+import { useAppSelector } from "@javascript/store";
 
 export type Seat = {
   x: number
@@ -51,6 +54,8 @@ export const SeatingMap = ({ sections, floorName }: { sections: Section[], floor
   const sectionElements = buildSectionElements(sections)
   const svgRef = useRef<SVGSVGElement>(null)
   const [map, setMap] = useState<SvgPanZoom.Instance | null>(null)
+  const { isLoading } = useAppSelector((state) => state.loading)
+  const loadingClass = isLoading && 'is-loading'
 
   useEffect(() => {
     const svgMap = svgRef.current && svgPanZoom(svgRef.current, {
@@ -81,6 +86,12 @@ export const SeatingMap = ({ sections, floorName }: { sections: Section[], floor
 
   return (
     <>
+      <div className={`syos-frame__map-overlay syos-loader-overlay ${loadingClass}`}
+        aria-hidden="true"
+      >
+        <SVG src={ loadingSvg } className="syos-icon" title="zoom in"/>
+      </div>
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
