@@ -14,7 +14,7 @@ json.sections do
       json.array! section.seats do |seat|
         json.x seat.x
         json.y seat.y
-        json.venueFloorSeatPath venue_floor_seat_path(venue, floor, seat.row_number)
+        json.venueFloorSeatPath venue_floor_seat_path(venue, floor, seat.row_number, {props_at: "data.seat"})
         json.ariaLabel seat.row_number
 
         if Current.cart.include?(seat)
