@@ -5,6 +5,7 @@ import {
   BuildVisitAndRemote,
 } from "@thoughtbot/superglue";
 import { visit, remote } from "@thoughtbot/superglue/action_creators";
+import { hideLoading, showLoading } from "./slices/loading";
 
 /**
  * This function returns a wrapped visit and remote that will be used by UJS,
@@ -43,6 +44,7 @@ export const buildVisitAndRemote: BuildVisitAndRemote = (
      * Hint: you can access the current pageKey
      * via `store.getState().superglue.currentPageKey`
      */
+    store.dispatch(showLoading());
     return store
       .dispatch(visit(path, options))
       .then((meta) => {
@@ -81,9 +83,11 @@ export const buildVisitAndRemote: BuildVisitAndRemote = (
          *
          * This is where you hide a progress bar.
          */
+        store.dispatch(hideLoading());
       })
       .catch((err) => {
         const response = err.response;
+        store.dispatch(hideLoading());
 
         if (!response) {
           /**

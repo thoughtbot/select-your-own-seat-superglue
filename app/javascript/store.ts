@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { flashSlice } from "./slices/flash";
+import { loadingSlice } from "./slices/loading";
 import {
   beforeVisit,
   beforeFetch,
@@ -22,6 +23,7 @@ export const store = configureStore({
     superglue,
     pages,
     flash: flashSlice.reducer,
+    loading: loadingSlice.reducer,
   },
 });
 
