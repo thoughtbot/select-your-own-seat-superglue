@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import svgPanZoom from 'svg-pan-zoom'
 import { SvgZoomControls } from "./SvgZoomControls"
 
@@ -50,9 +50,10 @@ const buildSectionElements = (sections: Section[]) => {
 export const SeatingMap = ({ sections }: { sections: Section[] }) => {
   const sectionElements = buildSectionElements(sections)
   const svgRef = useRef<SVGSVGElement>(null)
+  const [map, setMap] = useState<SvgPanZoom.Instance | null>(null)
 
   useEffect(() => {
-    const map = svgRef.current && svgPanZoom(svgRef.current, {
+    const svgMap = svgRef.current && svgPanZoom(svgRef.current, {
       center: true,
       fit: true,
       zoomEnabled: false,
@@ -61,10 +62,18 @@ export const SeatingMap = ({ sections }: { sections: Section[] }) => {
       maxZoom: 8,
     })
 
+    if(svgMap) {
+      setMap(svgMap)
+    }
+
     return () => {
-      map?.destroy()
+      svgMap?.destroy()
+      setMap(null)
     }
   }, [])
+
+  const zoomIn = () => map?.zoomIn()
+  const zoomOut = () => map?.zoomOut()
 
   return (
     <>
@@ -100,7 +109,7 @@ export const SeatingMap = ({ sections }: { sections: Section[] }) => {
         </svg>
         {sectionElements}
       </svg>
-      <SvgZoomControls/>
+      <SvgZoomControls onZoomIn={zoomIn} onZoomOut={zoomOut}/>
     </>
   )
 }
