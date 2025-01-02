@@ -78,7 +78,7 @@ export const SeatDialog = (props: SeatDialogProps) => {
           </div>
 
           <div className="syos-inline-stack__item" >
-            <ButtonTo {...seatSelectionForm} />
+            <ButtonTo {...seatSelectionForm}/>
           </div>
         </div>
       </footer>

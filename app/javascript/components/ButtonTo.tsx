@@ -12,7 +12,7 @@ export const ButtonTo = ({form, extras, inputs, children, ...rest}: PropsWithChi
     <button className="syos-button" type="submit" {...rest}>{ children }</button>;
 
   return (
-    <Form {...form} extras={extras}>
+    <Form {...form} extras={extras} data-sg-visit>
       {btnSubmit}
     </Form>
   )
