@@ -12,7 +12,7 @@ export const Dialog = ({open, children}: PropsWithChildren<{open?: boolean}>) =>
   }, [open]);
 
   return (
-    <dialog className='syos-dialog' ref={ref}>
+    <dialog className='syos-dialog' ref={ref} onClose={() => history.back()}>
       {children}
     </dialog>
   )
