@@ -22,7 +22,7 @@ export const Cart = (props: CartProps) => {
       <td className="syos-table__cell--numerals"> {price} </td>
       <td className="syos-u-text-align-right">
         <ButtonTo {...removeSeatForm} className="syos-button syos-button--transparent">
-          <SVG src={ closeSvg } className="syos-icon" title="Remove"/>
+          <SVG src={ closeSvg } className="syos-icon" loader={<span>Remove</span>} title="Remove"/>
         </ButtonTo>
       </td>
     </tr>
