@@ -62,3 +62,4 @@ end
 gem "cssbundling-rails", "~> 1.3"
 gem "superglue"
 gem "active_link_to"
+gem 'humid'

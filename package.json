@@ -15,7 +15,9 @@
   },
   "version": "0.1.0",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.svg=dataurl --public-path=/assets",
+    "build": "yarn run build:web && yarn run build:ssr",
+    "build:web": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.svg=dataurl --public-path=/assets",
+    "build:ssr": "node ./build-ssr.mjs",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "devDependencies": {
@@ -23,6 +25,11 @@
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "esbuild": "^0.25.1"
+    "esbuild": "^0.25.1",
+    "esbuild-plugin-polyfill-node": "^0.3.0",
+    "esbuild-plugins-node-modules-polyfill": "^1.6.1",
+    "source-map-support": "^0.5.19",
+    "whatwg-url": "^14.2.0",
+    "text-encoding": "^0.7.0"
   }
 }

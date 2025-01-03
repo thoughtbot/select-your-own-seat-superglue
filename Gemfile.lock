@@ -125,6 +125,9 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    humid (0.0.6)
+      activesupport (>= 7.0)
+      mini_racer (>= 0.4)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
@@ -147,6 +150,12 @@ GEM
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
     language_server-protocol (3.17.0.4)
+    libv8-node (23.6.1.0)
+    libv8-node (23.6.1.0-aarch64-linux)
+    libv8-node (23.6.1.0-arm64-darwin)
+    libv8-node (23.6.1.0-x86_64-darwin)
+    libv8-node (23.6.1.0-x86_64-linux)
+    libv8-node (23.6.1.0-x86_64-linux-musl)
     lint_roller (1.1.0)
     logger (1.6.6)
     loofah (2.24.0)
@@ -160,6 +169,8 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
+    mini_racer (0.18.0)
+      libv8-node (~> 23.6.1.0)
     minitest (5.25.5)
     msgpack (1.8.0)
     net-imap (0.5.6)
@@ -383,6 +394,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.3)
   debug
   factory_bot (~> 5.0.0)
+  humid
   jsbundling-rails
   kamal
   pg (~> 1.1)

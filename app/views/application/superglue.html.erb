@@ -1,5 +1,6 @@
 <script type="text/javascript">
-  window.SUPERGLUE_INITIAL_PAGE_STATE=<%= render_props %>;<%# erblint:disable ErbSafety %>
+  <% initial_state = render_props %>
+  window.SUPERGLUE_INITIAL_PAGE_STATE=<%= initial_state %>;<%# erblint:disable ErbSafety %>
 </script>
 
-<div id="app"></div>
+<div id="app"><%= Humid.render(initial_state, request.scheme + '://' + request.host_with_port, request.fullpath).html_safe %></div>
