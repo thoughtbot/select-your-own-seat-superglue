@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Layout } from '@javascript/components/Layout'
 import { Cart, CartItemProps } from '@javascript/components/Cart'
 import { SeatFilter, SeatFilterFormProps } from '@javascript/components/SeatFilter'
@@ -7,6 +7,8 @@ import { useContent } from '@thoughtbot/superglue'
 import { SeatingMap, SeatingMapContentProps } from '@javascript/components/SeatingMap'
 import { SeatingLegend } from '@javascript/components/SeatingLegend'
 import { FloorSwitcher, FloorProps } from '@javascript/components/FloorSwitcher'
+import { urlToPageKey, copyPage, NavigationContext } from '@thoughtbot/superglue'
+import { useAppDispatch } from '@javascript/store'
 
 type ContentProps = {
   venueName: string
@@ -28,11 +30,27 @@ export default () => {
     filters
   } = useContent<ContentProps>()
 
-  const [maximum, setMaximum] = useState(seatingMap.maximum)
+  const dispatch = useAppDispatch()
+  const { navigateTo, pageKey, search } = useContext(NavigationContext)
+  const maximum = Number(search.maximum || Infinity)
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>, max: number) => {
-    setMaximum(max)
     event.preventDefault()
+
+    const nextUrl = new URL(document.location.href)
+    if (max !== Infinity) {
+      nextUrl.searchParams.set("maximum", String(max))
+      const nextPageKey = urlToPageKey(nextUrl.href)
+      dispatch(copyPage({from: pageKey, to: nextPageKey}))
+      navigateTo(nextPageKey, {
+        action: 'push'
+      })
+    } else {
+      nextUrl.searchParams.delete("maximum")
+      navigateTo(pageKey, {
+        action: 'replace'
+      })
+    }
   }
 
   return (
