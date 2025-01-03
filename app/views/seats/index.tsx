@@ -30,7 +30,7 @@ export default () => {
 
   const [maximum, setMaximum] = useState(seatingMap.maximum)
 
-  const handleFilter = (event: React.ChangeEvent<HTMLInputElement>, max: number) => {
+  const handleFilter = (event: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>, max: number) => {
     setMaximum(max)
     event.preventDefault()
   }
