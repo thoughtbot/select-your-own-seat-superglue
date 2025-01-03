@@ -1,6 +1,6 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { Application, VisitResponse } from '@thoughtbot/superglue';
+import { hydrateRoot } from 'react-dom/client';
 import { buildVisitAndRemote } from './application_visit';
 import { pageIdentifierToPageComponent } from './page_to_page_mapping';
 import { store } from './store'
@@ -15,8 +15,7 @@ if (typeof window !== "undefined") {
     const location = window.location;
 
     if (appEl) {
-      const root = createRoot(appEl);
-      root.render(
+      hydrateRoot(appEl,
         <Application
           className="full-height"
           // The base url prefixed to all calls made by the `visit`

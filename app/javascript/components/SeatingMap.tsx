@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
-import svgPanZoom from 'svg-pan-zoom'
 import { SvgZoomControls } from "./SvgZoomControls"
 import SVG from 'react-inlinesvg';
 import loadingSvg from '../../assets/images/icons/loader.svg'
 import { useAppSelector } from "@javascript/store";
+import type SvgPanZoom from 'svg-pan-zoom'
 
 export type Seat = {
   x: number
@@ -90,6 +90,7 @@ export const SeatingMap = ({ sections, floor, maximum }: SeatingMapProps) => {
   const loadingClass = isLoading && 'is-loading'
 
   useEffect(() => {
+    const svgPanZoom = require('svg-pan-zoom')
     const svgMap = svgRef.current && svgPanZoom(svgRef.current, {
       center: true,
       fit: true,
