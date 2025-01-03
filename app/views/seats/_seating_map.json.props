@@ -2,6 +2,8 @@ json.floor floor.name
 
 json.sections do
   json.array! sections do |section|
+    json.price section.price
+    
     if params.fetch(:maximum, Float::INFINITY).to_f >= section.price
       json.opacity "1.0"
       json.hidden false

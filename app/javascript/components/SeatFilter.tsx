@@ -5,18 +5,26 @@ import checkedSvg from "../../assets/images/icons/check-circle.svg"
 import { Form, FormProps } from "./"
 import { RadioButtonFieldWithLabel } from "@thoughtbot/candy_wrapper"
 
-export type SeatFilterProps = FormProps<{
+export type SeatFilterFormProps = FormProps<{
   maximum500: RadioButtonFieldWithLabel
   maximum1000: RadioButtonFieldWithLabel
   maximum1500: RadioButtonFieldWithLabel
 }>
 
-const MaxRadioButton = (props: RadioButtonFieldWithLabel) => {
-  const { label, ...rest } = props;
+type MaxRadioButtonProps = RadioButtonFieldWithLabel & {
+  onFilter: (event: React.ChangeEvent<HTMLInputElement>, maximum: number ) => void
+}
+
+const MaxRadioButton = (props: MaxRadioButtonProps) => {
+  const { label, onFilter, ...rest } = props;
 
   return (
     <>
-      <input {...rest} className="syos-tile-controls__input" />
+      <input
+        {...rest}
+        className="syos-tile-controls__input"
+        onChange={(event) => onFilter(event, Number(event.target.value))}
+      />
       <label className="syos-tile-controls__control" htmlFor={rest.id}>
         <SVG
           src={uncheckedSvg}
@@ -34,12 +42,17 @@ const MaxRadioButton = (props: RadioButtonFieldWithLabel) => {
   );
 };
 
-export const SeatFilter = (props: { filterForm: SeatFilterProps }) => {
-  const { filterForm } = props;
+type SeatFilter = {
+  filterForm: SeatFilterFormProps
+  onFilter: (event: React.ChangeEvent<HTMLInputElement>, maximum: number ) => void
+} 
+
+export const SeatFilter = (props: SeatFilter) => {
+  const { filterForm, onFilter } = props;
   const { form, inputs, extras } = filterForm;
 
   const controlElements = Object.values(inputs).map((inputProps) => (
-    <MaxRadioButton {...inputProps} />
+    <MaxRadioButton {...inputProps} onFilter={onFilter}/>
   ));
 
   return (

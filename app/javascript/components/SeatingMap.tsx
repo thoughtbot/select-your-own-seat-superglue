@@ -16,6 +16,7 @@ export type Seat = {
 
 export type Section = {
   opacity: string
+  price: number
   hidden: boolean
   seats: Seat[]
 }
@@ -51,8 +52,38 @@ const buildSectionElements = (sections: Section[]) => {
   })
 }
 
-export const SeatingMap = ({ sections, floorName }: { sections: Section[], floorName: string }) => {
-  const sectionElements = buildSectionElements(sections)
+export type SeatingMapContentProps = { 
+  sections: Section[], 
+  floor: string, 
+}
+
+export type SeatingMapProps = SeatingMapContentProps & { 
+  maximum: number
+}
+
+const filterSectionsByMax = (sections: Section[], maximum: number) => {
+  return sections.map((section) => {
+    const {opacity, hidden} = section
+    let nextOpacity, nextHidden;
+
+    if((maximum || Infinity)>= section.price) {
+      nextOpacity = '1.0'
+      nextHidden = false
+    } else {
+      nextOpacity = '0.3'
+      nextHidden = true
+    }
+
+   if (opacity === nextOpacity && hidden === nextHidden) {
+      return section
+    } else  {
+      return {...section, hidden: nextHidden, opacity: nextOpacity}
+    }
+  })
+}
+
+export const SeatingMap = ({ sections, floor, maximum }: SeatingMapProps) => {
+  const sectionElements = buildSectionElements(filterSectionsByMax(sections, maximum))
   const svgRef = useRef<SVGSVGElement>(null)
   const [map, setMap] = useState<SvgPanZoom.Instance | null>(null)
   const { isLoading } = useAppSelector((state) => state.loading)
@@ -80,7 +111,7 @@ export const SeatingMap = ({ sections, floorName }: { sections: Section[], floor
 
   useEffect(() => {
     map?.reset()
-  }, [floorName])
+  }, [floor])
 
   const zoomIn = () => map?.zoomIn()
   const zoomOut = () => map?.zoomOut()

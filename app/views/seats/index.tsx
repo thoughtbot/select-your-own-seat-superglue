@@ -1,24 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout } from '@javascript/components/Layout'
 import { Cart, CartItemProps } from '@javascript/components/Cart'
-import { SeatFilter, SeatFilterProps } from '@javascript/components/SeatFilter'
+import { SeatFilter, SeatFilterFormProps } from '@javascript/components/SeatFilter'
 import { SeatDialog, SeatDialogProps } from '@javascript/components/SeatDialog'
 import { useContent } from '@thoughtbot/superglue'
-import { SeatingMap, Section } from '@javascript/components/SeatingMap'
+import { SeatingMap, SeatingMapContentProps } from '@javascript/components/SeatingMap'
 import { SeatingLegend } from '@javascript/components/SeatingLegend'
 import { FloorSwitcher, FloorProps } from '@javascript/components/FloorSwitcher'
 
 type ContentProps = {
   venueName: string
-  seatingMap: {
-    sections:  Section[]
-    floorName: string
-  }
+  seatingMap: SeatingMapContentProps
   seat: SeatDialogProps
   cart: CartItemProps[]
   floors: FloorProps[]
   filters: {
-    filterForm: SeatFilterProps
+    filterForm: SeatFilterFormProps
   }
 }
 
@@ -30,6 +27,13 @@ export default () => {
     floors,
     filters
   } = useContent<ContentProps>()
+
+  const [maximum, setMaximum] = useState(seatingMap.maximum)
+
+  const handleFilter = (event: React.ChangeEvent<HTMLInputElement>, max: number) => {
+    setMaximum(max)
+    event.preventDefault()
+  }
 
   return (
     <Layout>
@@ -44,11 +48,11 @@ export default () => {
         <section className="syos-frame">
           <div className="syos-frame__map">
             <FloorSwitcher floors={floors}/>
-            <SeatingMap {...seatingMap}/>
+            <SeatingMap {...seatingMap} maximum={maximum}/>
             <SeatingLegend/>
           </div>
           <div className="syos-frame__sidebar">
-            <SeatFilter {...filters} />
+            <SeatFilter {...filters} onFilter={handleFilter}/> 
             <Cart cart={cart} />
           </div>
         </section>
