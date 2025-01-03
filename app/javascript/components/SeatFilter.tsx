@@ -1,19 +1,19 @@
-import React from "react"
-import SVG from "react-inlinesvg"
-import uncheckedSvg from "../../assets/images/icons/circle.svg"
-import checkedSvg from "../../assets/images/icons/check-circle.svg"
-import { Form, FormProps } from "./"
-import { RadioButtonFieldWithLabel } from "@thoughtbot/candy_wrapper"
+import React from "react";
+import SVG from "react-inlinesvg";
+import uncheckedSvg from "../../assets/images/icons/circle.svg";
+import checkedSvg from "../../assets/images/icons/check-circle.svg";
+import { Form, FormProps } from "./";
+import { RadioButtonFieldWithLabel } from "@thoughtbot/candy_wrapper";
 
 export type SeatFilterFormProps = FormProps<{
   maximum500: RadioButtonFieldWithLabel
   maximum1000: RadioButtonFieldWithLabel
   maximum1500: RadioButtonFieldWithLabel
-}>
+}>;
 
 type MaxRadioButtonProps = RadioButtonFieldWithLabel & {
-  onFilter: (event: React.ChangeEvent<HTMLInputElement>, maximum: number ) => void
-}
+  onFilter: (event: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>, maximum: number ) => void
+};
 
 const MaxRadioButton = (props: MaxRadioButtonProps) => {
   const { label, onFilter, ...rest } = props;
@@ -44,7 +44,7 @@ const MaxRadioButton = (props: MaxRadioButtonProps) => {
 
 type SeatFilter = {
   filterForm: SeatFilterFormProps
-  onFilter: (event: React.ChangeEvent<HTMLInputElement>, maximum: number ) => void
+  onFilter: MaxRadioButtonProps["onFilter"]
 } 
 
 export const SeatFilter = (props: SeatFilter) => {
@@ -52,11 +52,11 @@ export const SeatFilter = (props: SeatFilter) => {
   const { form, inputs, extras } = filterForm;
 
   const controlElements = Object.values(inputs).map((inputProps) => (
-    <MaxRadioButton {...inputProps} onFilter={onFilter}/>
+    <MaxRadioButton {...inputProps} onFilter={onFilter} />
   ));
 
   return (
-    <Form {...form} extras={extras}>
+    <Form {...form} extras={extras} onReset={(event) => onFilter(event, Infinity)}>
       <fieldset className="syos-u-margin-bottom-6">
         <legend className="syos-u-margin-bottom-2 syos-inline-stack">
           <h2 className="syos-inline-stack__item">Filter by max price</h2>
@@ -77,5 +77,5 @@ export const SeatFilter = (props: SeatFilter) => {
         />
       </fieldset>
     </Form>
-  )
-}
+  );
+};
