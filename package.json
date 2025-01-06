@@ -2,19 +2,24 @@
   "name": "select_your_own_seat",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
-    "@thoughtbot/superglue": "^0.41.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@thoughtbot/superglue": "~1.0.0",
     "breakpoint-sass": "^3.0.0",
     "esbuild": "^0.19.3",
-    "history": "^5.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.1.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "sass": "^1.69.0"
   },
   "version": "0.1.0",
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --public-path=/assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
+  "devDependencies": {
+    "@thoughtbot/candy_wrapper": "^0.0.2",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2"
   }
 }
