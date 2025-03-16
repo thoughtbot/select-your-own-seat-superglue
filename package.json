@@ -2,13 +2,15 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "breakpoint-sass": "2.7.1"
+    "breakpoint-sass": "2.7.1",
+    "sass": "^1.85.1"
   },
   "version": "0.1.0",
   "devDependencies": {
     "esbuild": "^0.25.1"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
