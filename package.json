@@ -1,14 +1,10 @@
 {
-  "name": "select_your_own_seat",
+  "name": "app",
   "private": true,
-  "dependencies": {
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
-    "stimulus": "^1.1.1",
-    "turbolinks": "^5.2.0"
-  },
-  "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.10.3"
+    "esbuild": "^0.25.1"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   }
 }
