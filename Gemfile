@@ -57,3 +57,4 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.3"
+gem "superglue"
